@@ -76,7 +76,9 @@ function GameEngine() {
                     }, 1000);
                 }, 750)
             }
-
+            if (flipCounter.innerText == 0) {
+                alert("Game Over");
+            }
             if (overlay[index].style.display === "none") {
                 chosenItm.push(cards[index]);
                 chosenOverlay.push(overlay[index]);
@@ -103,13 +105,6 @@ function GameEngine() {
                                     arr = shuffling();
                                     for (let i = 0; i < cards.length; i++) {
                                         cards[i].style.backgroundImage = "url('" + arr[i] + "')";
-                                        if (cards[i].style.backgroundImage == "url('" + arr[i] + "')") {
-                                            overlay[i].forEach(element => {
-                                                element.style.pointerEvents = "none";
-                                            });
-                                        } else {
-                                            element.style.pointerEvents = "auto";
-                                        }
                                     }
                                     setTimeout(() => {
 
