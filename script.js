@@ -55,7 +55,7 @@ function GameEngine() {
             flipCounter.innerText--;
             overlay[index].style.display = "none";
 
-            if (flipCounter.innerText == 0 && score.innerText != 3) {
+            if (flipCounter.innerText == 0 && score.innerText !== 3) {
                 setTimeout(() => {
                     alert("You Lost!");
                     setTimeout(() => {
@@ -75,6 +75,7 @@ function GameEngine() {
                     }, 1000);
                 }, 500)
             }
+
             if (overlay[index].style.display === "none") {
                 chosenItm.push(cards[index]);
                 chosenOverlay.push(overlay[index]);
