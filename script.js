@@ -4,7 +4,7 @@ let overlay = Array.from(document.querySelectorAll(".child"));
 let arr = [];
 let numbers = [0, 1, 2, 3, 4, 5];
 let counter = 1;
-let h1 = document.querySelector(".glow")
+let h1 = document.querySelector(".glow");
 let arrayOfImg = [
     "https://img.freepik.com/free-psd/logo-mockup-grey-wall_35913-2122.jpg?size=626&ext=jpg",
     "https://i.pinimg.com/originals/8c/0c/4f/8c0c4fad13ae5359ba476a46f0a35892.png",
@@ -62,7 +62,6 @@ function GameEngine() {
                     setTimeout(() => {
                         flipCounter.innerText = 12;
 
-
                         arr = shuffling();
                         for (let i = 0; i < cards.length; i++) {
                             cards[i].style.backgroundImage = "url('" + arr[i] + "')";
@@ -74,12 +73,10 @@ function GameEngine() {
                             item.style.display = "block";
                         });
                     }, 1000);
-                }, 750)
+                }, 750);
             }
             if (flipCounter.innerText == 0) {
-                setTimeout(() => {
-                    alert("Game Over");
-                }, 500);
+                alert("Game Over");
             }
             if (overlay[index].style.display === "none") {
                 chosenItm.push(cards[index]);
@@ -103,14 +100,12 @@ function GameEngine() {
                                     }, 300);
                                     flipCounter.innerText = 12;
 
-
-                                    arr = shuffling();
-                                    for (let i = 0; i < cards.length; i++) {
-                                        cards[i].style.backgroundImage = "url('" + arr[i] + "')";
-                                    }
                                     setTimeout(() => {
-
-                                    }, );
+                                        arr = shuffling();
+                                        for (let i = 0; i < cards.length; i++) {
+                                            cards[i].style.backgroundImage = "url('" + arr[i] + "')";
+                                        }
+                                    }, 400);
                                 }, 500);
 
                                 setTimeout(() => {
@@ -118,7 +113,7 @@ function GameEngine() {
                                     overlay.forEach((item) => {
                                         item.style.display = "block";
                                     });
-                                }, 1000);
+                                }, 200);
                             }
                         }, 300);
                     } else {
@@ -130,9 +125,7 @@ function GameEngine() {
                     }
                 }
             }
-
-
         });
     }
 }
-GameEngine()
+GameEngine();
