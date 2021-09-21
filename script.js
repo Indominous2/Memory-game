@@ -77,7 +77,9 @@ function GameEngine() {
                 }, 750)
             }
             if (flipCounter.innerText == 0) {
-                alert("Game Over");
+                setTimeout(() => {
+                    alert("Game Over");
+                }, 500);
             }
             if (overlay[index].style.display === "none") {
                 chosenItm.push(cards[index]);
