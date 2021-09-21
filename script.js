@@ -4,6 +4,7 @@ let overlay = Array.from(document.querySelectorAll(".child"));
 let arr = [];
 let numbers = [0, 1, 2, 3, 4, 5];
 let counter = 1;
+let h1 = document.querySelector(".glow")
 let arrayOfImg = [
     "https://img.freepik.com/free-psd/logo-mockup-grey-wall_35913-2122.jpg?size=626&ext=jpg",
     "https://i.pinimg.com/originals/8c/0c/4f/8c0c4fad13ae5359ba476a46f0a35892.png",
@@ -55,9 +56,9 @@ function GameEngine() {
             flipCounter.innerText--;
             overlay[index].style.display = "none";
 
-            if (flipCounter.innerText == 0 && score.innerText !== 3) {
+            if (score.innerText !== 3 && flipCounter.innerText == 0) {
                 setTimeout(() => {
-                    alert("You Lost!");
+                    h1.innerText = "You Lost";
                     setTimeout(() => {
                         flipCounter.innerText = 12;
 
@@ -66,14 +67,14 @@ function GameEngine() {
                         for (let i = 0; i < cards.length; i++) {
                             cards[i].style.backgroundImage = "url('" + arr[i] + "')";
                         }
-                    }, 500);
+                    });
                     setTimeout(() => {
                         score.innerText = 0;
                         overlay.forEach((item) => {
                             item.style.display = "block";
                         });
                     }, 1000);
-                }, 500)
+                }, 750)
             }
 
             if (overlay[index].style.display === "none") {
@@ -89,19 +90,32 @@ function GameEngine() {
                         setTimeout(() => {
                             alert("matched");
                             score.innerText++;
-                        }, 400);
+                        }, 200);
                         setTimeout(() => {
                             if (score.innerText == 3) {
                                 setTimeout(() => {
-                                    alert("You Won");
+                                    setTimeout(() => {
+                                        h1.innerText = "You Won";
+                                    }, 300);
                                     flipCounter.innerText = 12;
 
 
                                     arr = shuffling();
                                     for (let i = 0; i < cards.length; i++) {
                                         cards[i].style.backgroundImage = "url('" + arr[i] + "')";
+                                        if (cards[i].style.backgroundImage == "url('" + arr[i] + "')") {
+                                            overlay[i].forEach(element => {
+                                                element.style.pointerEvents = "none";
+                                            });
+                                        } else {
+                                            element.style.pointerEvents = "auto";
+                                        }
                                     }
+                                    setTimeout(() => {
+
+                                    }, );
                                 }, 500);
+
                                 setTimeout(() => {
                                     score.innerText = 0;
                                     overlay.forEach((item) => {
@@ -109,7 +123,7 @@ function GameEngine() {
                                     });
                                 }, 1000);
                             }
-                        }, 850);
+                        }, 300);
                     } else {
                         chosenOverlay[chosenOverlay.length - 1].style.display = "none";
                         setTimeout(() => {
